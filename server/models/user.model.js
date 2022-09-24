@@ -3,7 +3,8 @@ module.exports = (sequelize, Sequelize)=>{
         id:{
             type: Sequelize.BIGINT,
             primaryKey: true,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true
         },
         email:{
             type: Sequelize.STRING,
