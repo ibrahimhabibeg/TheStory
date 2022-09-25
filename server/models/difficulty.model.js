@@ -1,19 +1,15 @@
 module.exports = (sequelize, Sequelize)=>{
-    const genre = sequelize.define('genre',{
+    const difficulty = sequelize.define('difficulty',{
         id:{
             type: Sequelize.BIGINT,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
         },
-        title:{
+        name:{
             type: Sequelize.STRING,
-            allowNull: false
-        },
-        description:{
-            type: Sequelize.TEXT,
             allowNull: false
         }
     });
-    return genre;
+    return difficulty;
 }
