@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize)=>{
         },
         email:{
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
         },
         password:{
             type: Sequelize.STRING,
@@ -17,7 +17,6 @@ module.exports = (sequelize, Sequelize)=>{
         username:{
             type: Sequelize.STRING,
             allowNull: false,
-            unique:true
         },
         fName:{
             type: Sequelize.STRING,
@@ -27,6 +26,11 @@ module.exports = (sequelize, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         }
+    },{
+        indexes:[
+            {fields:["email"], unique:true},
+            {fields:["username"], unique:true},
+        ]
     });
     return user;
 }
