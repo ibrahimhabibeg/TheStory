@@ -1,21 +1,31 @@
 import axios from "axios";
-import data from "../data";
+import constants from "../constants";
 
-const sendSigninReqToBackend = (email, password) => {
+const sendSigninReqToBackend = (data) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(data.BACKEND_URL + "/auth/signin", { email, password })
+      .post(constants.BACKEND_URL + "/auth/signin", data)
       .then((res) => {
-        handleSigninSuccess(res);
+        handleSuccess(res);
         resolve(res);
       })
-      .catch((err) => {
-        reject(err);
-      });
+      .catch(reject);
   });
 };
 
-const handleSigninSuccess = (res) => {
+const sendSignupReqToBackend = (data) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(constants.BACKEND_URL + "/auth/signup", data)
+      .then((res) => {
+        handleSuccess(res);
+        resolve(res);
+      })
+      .catch(reject);
+  });
+};
+
+const handleSuccess = (res) => {
   setTokenInLocalStorage(res.data.token);
   setUserInLocalStorage(JSON.stringify(res.data.user));
 };
@@ -28,4 +38,4 @@ const setUserInLocalStorage = (user) => {
   localStorage.setItem("user", user);
 };
 
-export { sendSigninReqToBackend };
+export { sendSigninReqToBackend, sendSignupReqToBackend };

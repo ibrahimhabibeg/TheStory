@@ -12,33 +12,14 @@ import {
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import signinSidePhoto from "../images/signinSidePhoto.jpg";
 import { useState } from "react";
 import { sendSigninReqToBackend } from "../api/auth.api";
 import { useNavigate } from "react-router-dom";
-
-const Copyright = (props) => {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="/">
-        Words War
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
+import Copyright from "../components/copyright/Copyright";
 
 export default function Signin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loadingSignin, setLoadingSignin] = useState(false);
   const [errorInputField, setErrorInputField] = useState("");
   const [errorInputHelperText, setErrorInputHelperText] = useState("");
@@ -50,7 +31,11 @@ export default function Signin() {
     e.preventDefault();
     clearAllErrs();
     setLoadingSignin(true);
-    const signinPromise = sendSigninReqToBackend(email, password);
+    const data = new FormData(e.currentTarget);
+    const signinPromise = sendSigninReqToBackend({
+      email: data.get("email"),
+      password: data.get("password"),
+    });
     signinPromise.then(signinSuccess).catch(signinFail);
   };
   const clearAllErrs = () => {
@@ -79,16 +64,10 @@ export default function Signin() {
     setIsServerError(true);
     setServerErrMessage(err.message);
   };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
   const handleAlertClose = () => {
     setIsServerError(false);
     setServerErrMessage("");
-  }
+  };
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
       <Grid
@@ -133,8 +112,6 @@ export default function Signin() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              value={email}
-              onChange={handleEmailChange}
               autoFocus
               error={errorInputField === "email"}
               helperText={errorInputField === "email" && errorInputHelperText}
@@ -148,8 +125,6 @@ export default function Signin() {
               type="password"
               id="password"
               autoComplete="current-password"
-              value={password}
-              onChange={handlePasswordChange}
               error={errorInputField === "password"}
               helperText={
                 errorInputField === "password" && errorInputHelperText
@@ -189,7 +164,7 @@ export default function Signin() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

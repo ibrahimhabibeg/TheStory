@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { Suspense, lazy } from "react";
 const Signin = lazy(() => import("./pages/Signin"));
+const Signup = lazy(() => import("./pages/Signup"));
 
 export default function AppRouter() {
   return (
@@ -17,6 +18,14 @@ export default function AppRouter() {
           element={
             <Suspense fallback={<p>loading...</p>}>
               <Signin />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Suspense fallback={<p>loading...</p>}>
+              <Signup />
             </Suspense>
           }
         />
