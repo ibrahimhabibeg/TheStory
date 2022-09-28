@@ -9,11 +9,11 @@ export default function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        Words War
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
   );
-}
+};

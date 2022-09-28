@@ -5,8 +5,17 @@ import {
   Navigate,
 } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { CircularProgress, Box } from "@mui/material";
 const Signin = lazy(() => import("./pages/Signin"));
 const Signup = lazy(() => import("./pages/Signup"));
+
+function SuspenseLoader(){
+  return(
+    <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
+  );
+} 
 
 export default function AppRouter() {
   return (
@@ -16,7 +25,7 @@ export default function AppRouter() {
         <Route
           path="/signin"
           element={
-            <Suspense fallback={<p>loading...</p>}>
+            <Suspense fallback={SuspenseLoader}>
               <Signin />
             </Suspense>
           }
@@ -24,7 +33,7 @@ export default function AppRouter() {
         <Route
           path="/signup"
           element={
-            <Suspense fallback={<p>loading...</p>}>
+            <Suspense fallback={SuspenseLoader}>
               <Signup />
             </Suspense>
           }
