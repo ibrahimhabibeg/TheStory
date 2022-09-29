@@ -2,7 +2,6 @@ import {
   Alert,
   Avatar,
   Box,
-  Button,
   Collapse,
   Container,
   Grid,
@@ -14,8 +13,8 @@ import {
 import { LoadingButton } from "@mui/lab";
 import CloseIcon from "@mui/icons-material/Close";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Copyright from "../components/copyright/Copyright";
-import { sendSignupReqToBackend } from "../api/auth.api";
+import Copyright from "../../components/Copyright/Copyright";
+import { sendSignupReqToBackend } from "../../api/auth.api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

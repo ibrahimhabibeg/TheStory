@@ -13,11 +13,11 @@ import {
 import { LoadingButton } from "@mui/lab";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import signinSidePhoto from "../images/signinSidePhoto.jpg";
+import signinSidePhoto from "../../images/signinSidePhoto.jpg";
 import { useState } from "react";
-import { sendSigninReqToBackend } from "../api/auth.api";
+import { sendSigninReqToBackend } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
-import Copyright from "../components/copyright/Copyright";
+import Copyright from "../../components/Copyright/Copyright";
 
 export default function Signin() {
   const [loadingSignin, setLoadingSignin] = useState(false);

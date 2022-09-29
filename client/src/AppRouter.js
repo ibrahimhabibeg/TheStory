@@ -6,8 +6,9 @@ import {
 } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { CircularProgress, Box } from "@mui/material";
-const Signin = lazy(() => import("./pages/Signin"));
-const Signup = lazy(() => import("./pages/Signup"));
+const Signin = lazy(() => import("./pages/Signin/Signin"));
+const Signup = lazy(() => import("./pages/Signup/Signup"));
+const Topics = lazy(() => import("./pages/Topics/Topics"));
 
 function SuspenseLoader(){
   return(
@@ -35,6 +36,14 @@ export default function AppRouter() {
           element={
             <Suspense fallback={SuspenseLoader}>
               <Signup />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/topics"
+          element={
+            <Suspense fallback={SuspenseLoader}>
+              <Topics />
             </Suspense>
           }
         />
