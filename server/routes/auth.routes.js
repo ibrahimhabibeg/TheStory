@@ -1,5 +1,5 @@
-const { createAndSendToken } = require("../controllers/auth.controller");
 const {
+  createAndSendToken,
   checkSigninDataAreProvided,
   saveSignInDataToReq,
   checkUserExistsAndSetUser,
@@ -9,7 +9,7 @@ const {
   checkSignupDataAreProvided,
   saveNewUserDataToReq,
   createNewUserAndSaveToReq,
-} = require("../middleware/auth.middleware");
+} = require("../controllers/auth.controller");
 
 module.exports = (app) => {
   app.post("/auth/signin", [
