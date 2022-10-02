@@ -1,10 +1,10 @@
 import axios from "axios";
-import constants from "../constants";
+import config from "../config";
 
 const sendSigninReqToBackend = (data) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(constants.BACKEND_URL + "/auth/signin", data)
+      .post(config.BACKEND_URL + "/auth/signin", data)
       .then((res) => {
         handleSuccess(res);
         resolve(res);
@@ -16,7 +16,7 @@ const sendSigninReqToBackend = (data) => {
 const sendSignupReqToBackend = (data) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(constants.BACKEND_URL + "/auth/signup", data)
+      .post(config.BACKEND_URL + "/auth/signup", data)
       .then((res) => {
         handleSuccess(res);
         resolve(res);
