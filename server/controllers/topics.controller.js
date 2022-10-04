@@ -3,12 +3,12 @@ const topicsModel = db.topic;
 const genreModel = db.genre;
 const { isInt } = require("../utils/dataTypes");
 
-const getTopicsWithGenreTitle = (req, res) => {
+const getTopicsWithGenreTitle = async (req, res) => {
   const order = getOrder(req);
   const limit = getLimit(req);
   const offset = getOffset(req, limit);
-  const count = getTopicsCount();
-  const topics = getTopicsWithParametersAndGenreTitle(order, offset, limit);
+  const count = await getTopicsCount();
+  const topics = await getTopicsWithParametersAndGenreTitle(order, offset, limit);
   const formattedMessage = getFormattedMessage(topics, count);
   return res.status(200).send(formattedMessage);
 };
@@ -46,7 +46,7 @@ const getTopicsCount = async () => {
 
 const getTopicsWithParametersAndGenreTitle = async (order, offset, limit) => {
   const attributes = ["id", "title"];
-  const genreAttributes = ["name"];
+  const genreAttributes = ["title"];
   return await topicsModel.findAll({
     attributes,
     order,
