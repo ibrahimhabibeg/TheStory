@@ -15,8 +15,8 @@ const getTopicsWithGenreTitle = async (req, res) => {
 
 const getOrder = (req) => {
   let { order, orderBy } = req.body;
-  if (order !== "ASC" && order !== "DESC") {
-    order = "ASC";
+  if (order !== "asc" && order !== "desc") {
+    order = "asc";
   }
   if (orderBy !== "id" && orderBy !== "title") {
     orderBy = "id";

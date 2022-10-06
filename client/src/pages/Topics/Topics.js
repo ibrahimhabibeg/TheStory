@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar/Navbar";
-import TopicsTable from "./TopicsTable";
+import Table from "./Table/TopicsTable";
 import { Grid } from "@mui/material";
 
 export default function Topics(props) {
@@ -14,8 +14,8 @@ export default function Topics(props) {
         justifyContent="center"
         mt={2}
       >
-        <Grid items maxWidth={'100%'} width={800}>
-          <TopicsTable />
+        <Grid item maxWidth={'100%'} width={"auto"}>
+          <Table />
         </Grid>
       </Grid>
     </>
