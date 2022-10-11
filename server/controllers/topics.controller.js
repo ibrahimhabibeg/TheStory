@@ -2,7 +2,22 @@ const db = require("../models");
 const topicsModel = db.topic;
 const genreModel = db.genre;
 const { isInt } = require("../utils/dataTypes");
+const getFormattedTopics = require("../data/formatedTopics");
 
+const addPredefinedTopics = async() => {
+  const predefinedTopics = getFormattedTopics();
+  const rows = createRowsForPredefinedTopics(predefinedTopics);
+  const addedRows = await topicsModel.bulkCreate(rows);
+}
+
+const createRowsForPredefinedTopics = (predefinedTopics) => {
+  const maxId = topicsModel.max("id");
+  const rows = [];
+  for (let i = 0; i < predefinedTopics.length; i++) {
+    rows.push({id:maxId+1+i, title:predefinedTopics[i]});
+  }
+  return rows;
+}
 const getTopicsWithGenreTitle = async (req, res) => {
   const order = getOrder(req);
   const limit = getLimit(req);
@@ -65,4 +80,4 @@ const getFormattedMessage = (topics, count) => {
   };
 };
 
-module.exports = { getTopicsWithGenreTitle };
+module.exports = { getTopicsWithGenreTitle, addPredefinedTopics };
