@@ -1,5 +1,5 @@
-const { getTopicsWithGenreTitle } = require("../controllers/topics.controller");
+const { getTopics } = require("../controllers/topics.controller");
 
 module.exports = (app) => {
-  app.post("/topics/getWithGenreTitle", getTopicsWithGenreTitle);
+  app.post("/topics/get", getTopics);
 };

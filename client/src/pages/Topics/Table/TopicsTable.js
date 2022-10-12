@@ -1,6 +1,6 @@
 import { Table, TableBody, TableContainer, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getTopicsWithGenreTitle } from "../../../api/topics.api";
+import { getTopics } from "../../../api/topics.api";
 import TableHead from "./TopicsTableHead";
 import StyledTableCell from "./StyledTableCell";
 import StyledTableRow from "./StyledTableRow";
@@ -12,7 +12,7 @@ export default function TopicsTable() {
   const [orderBy, setOrderBy] = useState("id");
 
   useEffect(() => {
-    const rowsPromise = getTopicsWithGenreTitle({ order, orderBy });
+    const rowsPromise = getTopics({ order, orderBy });
     rowsPromise
       .then((res) => {
         setRows(res.data.topics);
@@ -40,7 +40,7 @@ export default function TopicsTable() {
         <TableBody>
           {rows.map((row) => (
             <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row" sx={{ width: 100 }}>
+              <StyledTableCell component="th" scope="row" sx={{ width:{md:100,xs:60} }}>
                 {row.id}.
               </StyledTableCell>
               <StyledTableCell
@@ -50,13 +50,6 @@ export default function TopicsTable() {
                 }}
               >
                 {row.title}
-              </StyledTableCell>
-              <StyledTableCell
-                sx={{
-                  width: { md: 150, xs: 100 },
-                }}
-              >
-                {row.genre.title}
               </StyledTableCell>
             </StyledTableRow>
           ))}

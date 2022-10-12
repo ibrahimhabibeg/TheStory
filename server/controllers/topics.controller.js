@@ -1,6 +1,5 @@
 const db = require("../models");
 const topicsModel = db.topic;
-const genreModel = db.genre;
 const { isInt } = require("../utils/dataTypes");
 const getFormattedTopics = require("../data/formatedTopics");
 
@@ -18,12 +17,12 @@ const createRowsForPredefinedTopics = (predefinedTopics) => {
   }
   return rows;
 }
-const getTopicsWithGenreTitle = async (req, res) => {
+const getTopics = async (req, res) => {
   const order = getOrder(req);
   const limit = getLimit(req);
   const offset = getOffset(req, limit);
   const count = await getTopicsCount();
-  const topics = await getTopicsWithParametersAndGenreTitle(order, offset, limit);
+  const topics = await getTopicsWithParameters(order, offset, limit);
   const formattedMessage = getFormattedMessage(topics, count);
   return res.status(200).send(formattedMessage);
 };
@@ -59,15 +58,13 @@ const getTopicsCount = async () => {
   return await topicsModel.count();
 };
 
-const getTopicsWithParametersAndGenreTitle = async (order, offset, limit) => {
+const getTopicsWithParameters = async (order, offset, limit) => {
   const attributes = ["id", "title"];
-  const genreAttributes = ["title"];
   return await topicsModel.findAll({
     attributes,
     order,
     offset,
-    limit,
-    include: { model: genreModel, attributes: genreAttributes },
+    limit
   });
 };
 
@@ -80,4 +77,4 @@ const getFormattedMessage = (topics, count) => {
   };
 };
 
-module.exports = { getTopicsWithGenreTitle, addPredefinedTopics };
+module.exports = { getTopics, addPredefinedTopics };

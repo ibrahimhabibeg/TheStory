@@ -10,6 +10,7 @@ const getFormattedTopics = () => {
     topicsArr[i] = topicsArr[i].replace("]", "");
   }
   topicsArr.splice(0,1);
+  topicsArr.splice(706,1);
   return topicsArr;
 };
 

@@ -15,13 +15,7 @@ const headCells = [
     numeric: false,
     disablePadding: false,
     label: "Title",
-  },
-  {
-    id: "genreId",
-    numeric: false,
-    disablePadding: false,
-    label: "Genre",
-  },
+  }
 ];
 
 export default function TopicsTableHead(props) {
