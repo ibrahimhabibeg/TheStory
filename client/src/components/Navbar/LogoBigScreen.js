@@ -20,7 +20,7 @@ export default function LogoBigScreen() {
           textDecoration: "none",
         }}
       >
-        Words War
+        The Story
       </Typography>
     </>
   );

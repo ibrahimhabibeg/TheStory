@@ -23,7 +23,7 @@ export default function LogoSmallScreen() {
           fontSize: 17,
         }}
       >
-        Words War
+        The Story
       </Typography>
     </>
   );
