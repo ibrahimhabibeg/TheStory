@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 
 const pages = [
   { name: "Home", href: "/" },
-  { name: "Leaderboards", href: "/leaderboards" },
-  { name: "View", href: "/view" },
+  { name: "Inspirational Prompts", href: "/topics" },
+  { name: "Create", href: "/create" },
 ];
 const settings = ["Profile"];
 
