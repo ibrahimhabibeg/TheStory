@@ -1,12 +1,23 @@
 import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function PagesSmallScreen({
   pages,
   changeTheme,
   getThemeText,
+  openModal
 }) {
+  const navigate = useNavigate();
+  const handleClick = (page) =>{
+    if(page.isPrivate){
+      openModal();
+      return;
+    }
+    navigate(page.href);
+    return;
+  }
   const [anchorElNav, setAnchorElNav] = useState(null);
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -52,7 +63,7 @@ export default function PagesSmallScreen({
           <MenuItem key={page.name} onClick={handleCloseNavMenu}>
             <Button
               component="a"
-              href={page.href}
+              onClick={()=>handleClick(page)}
               color="inherit"
               sx={{
                 textDecoration: "none",
