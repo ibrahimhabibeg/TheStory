@@ -4,40 +4,29 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Suspense, lazy, useState, useEffect } from "react";
-import {
-  CssBaseline,
-  ThemeProvider,
-  CircularProgress,
-  Box,
-} from "@mui/material";
+import { Suspense, lazy, useState } from "react";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { lightTheme } from "./themes/light";
 import { darkTheme } from "./themes/dark";
+import SuspenseLoader from "./components/Loaders/SuspenseLoader/SuspenseLoader";
+import PrivateRoute from "./routes/PrivateRoute";
 const Signin = lazy(() => import("./pages/Signin/Signin"));
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Topics = lazy(() => import("./pages/Topics/Topics"));
-
-function SuspenseLoader() {
-  return (
-    <Box sx={{ display: "flex" }}>
-      <CircularProgress />
-    </Box>
-  );
-}
 
 export default function AppRouter() {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") === "dark" ? darkTheme : lightTheme
   );
   const changeTheme = () => {
-    if(localStorage.getItem("theme") === "dark"){
-      localStorage.setItem("theme","light");
+    if (localStorage.getItem("theme") === "dark") {
+      localStorage.setItem("theme", "light");
       setTheme(lightTheme);
-    }else{
-      localStorage.setItem("theme","dark");
+    } else {
+      localStorage.setItem("theme", "dark");
       setTheme(darkTheme);
     }
-  }
+  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
@@ -64,8 +53,16 @@ export default function AppRouter() {
             path="/topics"
             element={
               <Suspense fallback={SuspenseLoader}>
-                <Topics changeTheme={changeTheme}/>
+                <Topics changeTheme={changeTheme} />
               </Suspense>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <PrivateRoute>
+                <h1>Create</h1>
+              </PrivateRoute>
             }
           />
           <Route path="*" element={<Navigate to={"/"} />} />

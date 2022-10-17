@@ -31,9 +31,6 @@ export default function Navbar({ changeTheme }) {
     ) {
       setIsUserLoggedin(true);
       setUser(currentUser);
-    } else {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
     }
   }, []);
   const openModal = () => {

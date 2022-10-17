@@ -11,7 +11,7 @@ export default function PagesSmallScreen({
 }) {
   const navigate = useNavigate();
   const handleClick = (page) =>{
-    if(page.isPrivate){
+    if(page.isPrivate && !localStorage.getItem("user")){
       openModal();
       return;
     }
