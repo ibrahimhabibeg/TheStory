@@ -19,17 +19,11 @@ const validateToken = () => {
 };
 
 const handleError = (err) => {
-  console.log('====================================');
-  console.log("No oh no");
-  console.log('====================================');
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 };
 
 const handleSuccess = (res) => {
-  console.log('====================================');
-  console.log(res);
-  console.log('====================================');
   setTokenInLocalStorage(res.data.token);
   setUserInLocalStorage(JSON.stringify(res.data.user));
 };

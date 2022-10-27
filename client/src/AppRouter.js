@@ -13,6 +13,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 const Signin = lazy(() => import("./pages/Signin/Signin"));
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Topics = lazy(() => import("./pages/Topics/Topics"));
+const Create = lazy(() => import("./pages/Create/Create"));
 
 export default function AppRouter() {
   const [theme, setTheme] = useState(
@@ -61,7 +62,7 @@ export default function AppRouter() {
             path="/create"
             element={
               <PrivateRoute>
-                <h1>Create</h1>
+                <Create changeTheme={changeTheme}/>
               </PrivateRoute>
             }
           />

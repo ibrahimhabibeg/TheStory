@@ -34,9 +34,6 @@ export default function Navbar({ changeTheme }) {
     }
   }, []);
   const openModal = () => {
-    console.log('====================================');
-    console.log(noOfTimesOpenedModal);
-    console.log('====================================');
     setNoOfTimesOpenedModal(currentVal=>currentVal+1);
   }
   const getThemeText = () => {
