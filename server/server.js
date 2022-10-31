@@ -13,6 +13,7 @@ db.sequelize.sync({alter:true});
 require("./routes/auth.routes")(app);
 require("./routes/topics.routes")(app);
 require("./routes/token.routes")(app);
+require("./routes/writing.routes")(app);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT,()=>{

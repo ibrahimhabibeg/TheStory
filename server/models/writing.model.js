@@ -7,12 +7,14 @@ module.exports = (sequelize, Sequelize)=>{
             autoIncrement: true
         },
         title:{
-            type: Sequelize.STRING,
-            allowNull: false
+            type: Sequelize.STRING
         },
         text:{
-            type: Sequelize.TEXT,
-            allowNull: false
+            type: Sequelize.TEXT
+        },
+        isPublished:{
+            type: Sequelize.BOOLEAN,
+            defaultValue: false
         }
     });
     return writing;
