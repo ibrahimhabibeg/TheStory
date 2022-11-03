@@ -32,4 +32,23 @@ const sendUpdateMessageToUser = (updatedWriting, res) => {
   return res.status(200).send({updatedWriting, severity:"success", message:"Writing updated successfully"});
 }
 
-module.exports = {initializeWriting, updateWriting};
+
+/////////////////  Get Writing ////////////////////
+
+const getWriting = async (req, res) => {
+  if(!isWritingProvided(req)) return;
+  const writing = await writingModel.findOne({where:{id:req.params.writingId}});
+  if(writing) return res.status(200).send({writing, severity:"success", message:"Writing found successfully"});
+  else return res.status(400).send({severity:"error", message:"Writing doesn't exist."});
+}
+
+const isWritingProvided = (req, res) => {
+  if(!req.params.writingId){
+    res.status(400).send({severity:"error", message:"No writing is provided."});
+    return false;
+  }
+  return true;
+}
+
+
+module.exports = {initializeWriting, updateWriting, getWriting};

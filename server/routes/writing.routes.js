@@ -1,6 +1,7 @@
 const {
   initializeWriting,
   updateWriting,
+  getWriting
 } = require("../controllers/writing.controller");
 
 const {
@@ -33,5 +34,10 @@ module.exports = (app) => {
       isTextAndTitleProvidedAndSetThem,
     ],
     updateWriting
+  );
+
+  app.get(
+    "/writing/get/:writingId",
+    getWriting
   );
 };
