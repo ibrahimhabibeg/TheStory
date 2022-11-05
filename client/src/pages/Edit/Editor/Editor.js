@@ -1,4 +1,3 @@
-import { $getRoot, $getSelection } from "lexical";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
@@ -6,22 +5,24 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import Toolbar from "./Toolbar/Toolbar";
 import { Box } from "@mui/material";
+import { useRef } from "react";
 
 const onError = (err) => {};
 
-const onChange = (editorState) => {
-  editorState.read(() => {
-    const root = $getRoot();
-    const selection = $getSelection();
-  });
-};
+export default function Editor({ initialEditorState, updateText }) {
+  const editorStateRef = useRef();
 
-export default function Editor() {
   const initialConfig = {
+    editorState: initialEditorState,
     namespace: "Editor",
-    theme: {},
     onError,
   };
+
+  const onChange = (editorState) => {
+    editorStateRef.current = editorState;
+    updateText(JSON.stringify(editorStateRef.current));
+  };
+
   return (
     <Box
       className="rounded-sm shadow-sm  border-gray-200"
@@ -43,13 +44,21 @@ export default function Editor() {
                 paddingBottom: 15,
                 paddingLeft: 10,
                 paddingRight: 10,
-                overflow:"hidden"
+                overflow: "hidden",
               }}
             />
           }
           placeholder={
-            <Box sx={{position:"absolute", top:15, left:10, color:"GrayText", pointerEvents:"none"}}>
-              Type your marvelous story ...
+            <Box
+              sx={{
+                position: "absolute",
+                top: 15,
+                left: 10,
+                color: "GrayText",
+                pointerEvents: "none",
+              }}
+            >
+              Type or paste your marvelous story ...
             </Box>
           }
           sx={{ padding: 10 }}

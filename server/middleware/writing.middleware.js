@@ -28,8 +28,8 @@ const isUserAuthorOfWriting = (req, res, next) => {
 }
 
 const isTextAndTitleProvidedAndSetThem = async (req, res, next) => {
-  if(req.body.title===null || req.body.text===null){
-    return res.status(400).send({severity:"error", message:"Titile or text is not provided."});
+  if(req.body.title===undefined || req.body.text===undefined){
+    return res.status(400).send({severity:"error", message:"Title or text is not provided."});
   }
   req.title = req.body.title;
   req.text = req.body.text;

@@ -1,53 +1,18 @@
-import Editor from "./Editor/Editor";
-import Navbar from "../../components/Navbar/Navbar";
-import { styled } from "@mui/material/styles";
-import { Box, TextField } from "@mui/material";
-import DateComponent from "./DateComponent";
+import SuspenseLoader from "../../components/Loaders/SuspenseLoader/SuspenseLoader";
+import { initializeWriting } from "../../api/writing.api";
+import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const TitleTextField = styled(TextField)({
-  "& .MuiInputBase-input": {
-    overflowY: "visible",
-    fontSize: 22,
-    border: "none",
-    ["@media (max-width:780px)"]: { // eslint-disable-line no-useless-computed-key
-      fontSize: 18,
-    },
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      border: "none",
-    },
-  },
-});
-
-export default function Create(props) {
-  return (
-    <Box sx={{ justifyContent: "center" }}>
-      <Navbar {...props} />
-      <Box
-        sx={{
-          mt: 5,
-          marginX: "auto",
-          width: "80%",
-          maxWidth: 800,
-          textAlign: "center",
-        }}
-      >
-        <TitleTextField
-          autoFocus
-          multiline
-          sx={{
-            width: "100%",
-            textAlign: "center",
-            fontSize: 500,
-            border: "none",
-          }}
-          inputProps={{ min: 0, style: { textAlign: "center" } }}
-          placeholder="Type you story title ..."
-        />
-      </Box>
-      <DateComponent />
-      <Editor />
-    </Box>
-  );
+export default function Create() {
+  const [writingId, setWritingId] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    initializeWriting()
+      .then((data) => {
+        setWritingId(data.data.writingId);
+      })
+      .catch((err) => navigate(-1));
+  }, [navigate]);
+  if (!writingId) return <SuspenseLoader />;
+  else return <Navigate to={`/edit/${writingId}`} />;
 }

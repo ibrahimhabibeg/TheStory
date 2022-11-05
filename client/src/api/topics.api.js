@@ -3,7 +3,6 @@ import config from "../config";
 
 let source = axios.CancelToken.source();
 const getTopics = (data) => {
-  source.cancel("Blah  BLAh");
   source = axios.CancelToken.source();
   return new Promise((resolve, reject) => {
     axios

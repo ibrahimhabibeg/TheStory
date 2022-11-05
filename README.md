@@ -65,7 +65,6 @@ There are many people out there who have the power to enchant the minds of peopl
 
 The project is still in development. I would be adding more features based on my own experience with it and feedback from the users. You can suggest changes and features by opening an issue or foking this repo and creating a pull request. Thanks in advance for all of your contributions.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -81,7 +80,6 @@ The project is still in development. I would be adding more features based on my
 * [![ReactRouter][ReactRouter.com]][ReactRouter-url]
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -128,22 +126,20 @@ To get a local copy up and running follow these simple steps.
    ```
    
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Use lexical to create interface for editing stories
 - [x] Create the functions used to read, edit, and create stories
-- [ ] Allow the frontend to change writings in the backend
+- [x] Allow the frontend to change writings in the backend
+- [ ] Add My Profile page
 - [ ] Create customized feed for the users
 - [ ] Multi-language Support
     - [ ] Arabic
 
 
-See the [open issues](https://github.com/ibrahimhabibeg/TheStory/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ibrahimhabibeg/TheStory/issues) for a full list of proposed features (and known issues).f
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -161,7 +157,6 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
@@ -171,14 +166,12 @@ Ibrahim Habib - ibrahimhabib.eg@gmail.com
 
 Project Link: [https://github.com/ibrahimhabibeg/TheStory](https://github.com/ibrahimhabibeg/TheStory)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 * [Robert Cecil Martin's "Clean Code"](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM)
 * [Img Shields](https://shields.io)
@@ -186,7 +179,6 @@ Use this space to list resources you find helpful and would like to give credit 
 * [othneildrew Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * [ratthachat writing-prompts](https://www.kaggle.com/datasets/ratthachat/writing-prompts)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
