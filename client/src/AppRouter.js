@@ -10,6 +10,7 @@ import { lightTheme } from "./themes/light";
 import { darkTheme } from "./themes/dark";
 import SuspenseLoader from "./components/Loaders/SuspenseLoader/SuspenseLoader";
 import PrivateRoute from "./routes/PrivateRoute";
+import SidebarRoute from "./routes/SidebarRoute/SidebarRoute";
 const Signin = lazy(() => import("./pages/Signin/Signin"));
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Topics = lazy(() => import("./pages/Topics/Topics"));
@@ -73,6 +74,12 @@ export default function AppRouter() {
               <PrivateRoute>
                 <Edit changeTheme={changeTheme} />
               </PrivateRoute>
+            }
+          />
+          <Route
+            path="/side"
+            element={
+              <SidebarRoute/>
             }
           />
           <Route path="*" element={<Navigate to={"/"} />} />
