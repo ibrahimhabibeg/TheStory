@@ -1,40 +1,66 @@
 import { Tooltip, Box } from "@mui/material";
-import { Home, Whatshot, Bookmarks, Create } from "@mui/icons-material";
+import {
+  Home,
+  HomeOutlined,
+  Whatshot,
+  WhatshotOutlined,
+  Bookmarks,
+  BookmarksOutlined,
+  Create,
+  CreateOutlined,
+} from "@mui/icons-material";
 import { Stack } from "@mui/system";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Links() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const routes = [
     {
       title: "Home",
-      icon: Home,
-      href: "/",
+      iconFilled: Home,
+      iconOutlined: HomeOutlined,
+      href: "/side",
     },
     {
       title: "What's Hot",
-      icon: Whatshot,
+      iconFilled: Whatshot,
+      iconOutlined: WhatshotOutlined,
       href: "/hot",
     },
     {
       title: "Bookmarks",
-      icon: Bookmarks,
+      iconFilled: Bookmarks,
+      iconOutlined: BookmarksOutlined,
       href: "/bookmarks",
     },
     {
       title: "Create",
-      icon: Create,
+      iconFilled: Create,
+      iconOutlined: CreateOutlined,
       href: "/create",
     },
   ];
+  const navigateToRoute = (route) => {
+    navigate(route);
+  };
   return (
     <Stack>
       {routes.map((route) => (
-        <Box sx={{width:"100%", textAlign:"right"}}>
+        <Box
+          sx={{ width: "100%", textAlign: "right" }}
+          onClick={() => navigateToRoute(route.href)}
+        >
           <Tooltip
             title={route.title}
             placement="right"
             sx={{ height: 28, width: 26, my: 2 }}
           >
-            <route.icon href={route.href} />
+            {pathname === route.href ? (
+              <route.iconFilled />
+            ) : (
+              <route.iconOutlined />
+            )}
           </Tooltip>
         </Box>
       ))}
