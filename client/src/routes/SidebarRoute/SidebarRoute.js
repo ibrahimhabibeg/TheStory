@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import LargeScreenNavbar from "./LargeScreenNavbar/LargeScreenNavbar";
 
 export default function RouteWithSidebar() {
   return (
@@ -19,11 +20,12 @@ export default function RouteWithSidebar() {
             borderColor: "GrayText",
             minHeight: "100vh",
             textAlign: "right",
+            alignItems: "right",
             paddingRight:2,
             paddingTop:2
           }}
         >
-          left
+          <LargeScreenNavbar/>
         </Box>
         <Box sx={{ width: "60%", padding:2 }}>main</Box>
         <Box
