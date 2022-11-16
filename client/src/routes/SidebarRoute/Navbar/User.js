@@ -1,13 +1,7 @@
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Typography,
-  Menu,
-  Tooltip,
-  MenuItem,
-} from "@mui/material";
+import { Avatar, Box, IconButton, Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
+import { AccountCircle } from "@mui/icons-material";
+import SigninModal from "../../../components/SigninModal/SigninModal";
 
 export default function User() {
   const [user, setUser] = useState({});
@@ -26,28 +20,14 @@ export default function User() {
       setUser(currentUser);
     }
   }, []);
-  return isUserLoggedin?<UserLogged user={user}/>:<UserNotLogged/>;
+  return isUserLoggedin ? <UserLogged user={user} /> : <UserNotLogged />;
 }
 
-const UserLogged = ({user}) => {
-  const [anchorElUser, setAnchorElUser] = useState(null);
-
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    handleCloseUserMenu();
-    window.location.reload();
-  };
+const UserLogged = ({ user }) => {
   return (
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title="Open settings" placement="right">
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+        <IconButton sx={{ p: 0 }}>
           <Avatar alt={user.username} src="/" />
         </IconButton>
       </Tooltip>
@@ -55,4 +35,15 @@ const UserLogged = ({user}) => {
   );
 };
 
-const UserNotLogged = () => {};
+const UserNotLogged = () => {
+  const [noOfTimesOpened, setNoOfTimesOpened] = useState(0);
+  const openModal = () => {
+    setNoOfTimesOpened((currentVal) => (currentVal += 1));
+  };
+  return (
+    <>
+      <SigninModal noOfTimesOpened={noOfTimesOpened} />
+      <AccountCircle sx={{ height: "40px", width: "40px" }} onClick={openModal}/>
+    </>
+  );
+};

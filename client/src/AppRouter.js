@@ -72,16 +72,13 @@ export default function AppRouter() {
             path="/edit/:writingId"
             element={
               <PrivateRoute>
-                <Edit changeTheme={changeTheme} />
+                <SidebarRoute>
+                  <Edit changeTheme={changeTheme} />
+                </SidebarRoute>
               </PrivateRoute>
             }
           />
-          <Route
-            path="/side"
-            element={
-              <SidebarRoute/>
-            }
-          />
+          <Route path="/side" element={<SidebarRoute>Testing</SidebarRoute>} />
           <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
       </Router>

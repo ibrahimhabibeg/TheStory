@@ -1,12 +1,11 @@
 import  {Stack, Box} from "@mui/material";
 import Logo from "./Logo";
 import Links from "./Links";
-import User from "./User";
-import { Home } from "@mui/icons-material";
+import User from "../User";
 
-export default function LargeScreenNavbar(){
+export default function LargeScreenNavbar({routes}){
   return(
-    <Stack sx={{height:"100%", justifyContent:"space-between", paddingTop:2, paddingBottom:5}}>
+    <Stack sx={{height:"100vh", justifyContent:"space-between", paddingTop:2, paddingBottom:5}}>
       <Box>
         <Logo/>
       </Box>

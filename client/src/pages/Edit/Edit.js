@@ -1,5 +1,4 @@
 import Editor from "./Editor/Editor";
-import Navbar from "../../components/Navbar/Navbar";
 import { Box } from "@mui/material";
 import DateComponent from "./DateComponent";
 import { getWriting, editWriting } from "../../api/writing.api";
@@ -50,7 +49,6 @@ export default function Create(props) {
   if (loadingInitialValues) return <SuspenseLoader />;
   return (
     <Box sx={{ justifyContent: "center" }}>
-      <Navbar {...props} />
       <Title initialTitle={initialTitle} updateTitle={updateTitle} />
       <DateComponent />
       <Editor initialEditorState={initialWriting} updateText={updateText} />
